@@ -1,0 +1,47 @@
+/* CSS for Noteful Components*/
+
+.Main{
+    flex-grow: 2;
+    /* align-content: right; */
+    margin: 30px;
+    max-width: 500px;
+}
+
+.Sidebar{
+    text-align: center;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.Group{
+    display:flex ;
+    align-items: flex-start;
+}
+
+.Note-Divs{
+    padding: 10px;
+    text-align: left;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000000;
+}
+
+.Folder-Divs{
+    padding: 5px;
+    text-align: center;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000000;
+}
+
+
+h1{
+    text-align: center;
+}
+
+li{
+    list-style: none;
+}
