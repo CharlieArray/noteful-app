@@ -9,7 +9,7 @@ import NotesSidebar from "./NotesSidebar";
 
 export default class NotesPage extends React.Component {
   render() {
-    
+
     return (
       <div>
         <header className="App-header">
@@ -26,6 +26,8 @@ export default class NotesPage extends React.Component {
               render={(props) => (
                 <NotesSidebar 
                 {...props} 
+                match = {this.props.match}
+                history={this.props.history}
                 state={this.props.state}
                  />
               )}
