@@ -5,7 +5,6 @@ import FolderPage from "./Components/FolderPage";
 import MainPage from "./Components/MainPage";
 import NotesPage from "./Components/NotesPage";
 import dummyStore from "./dummyStore";
-import { findNote } from "./helperFunctions";
 
 class App extends React.Component {
   state = {
@@ -30,16 +29,11 @@ class App extends React.Component {
         />
 
         <Route
-          path="/note/:noteId"
-          render={(routeProps) => {
-            const { noteId } = routeProps.match.params;
-            const note = findNote(notes, noteId);
-            return <NotesPage {...routeProps} path={noteId} note={note} state={this.state} />;
-          }}
+          path="/note"
+          render={(props) => <NotesPage {...props} notes={notes} state={this.state} />}
         />
 
         <Route
-          exact
           path="/folder"
           render={(props) => <FolderPage {...props} state={this.state} />}
         />
