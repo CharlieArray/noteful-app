@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import "./Noteful.css";
+import StateContext from "../StateContext";
+import AddFolder from "./AddFolder";
 
 export default class NotesSidebar extends Component {
+  static contextType = StateContext;
   render() {
     const history = this.props.history;
+    const context = this.context;
 
     function handleBackClick() {
       history.goBack();
@@ -11,11 +15,11 @@ export default class NotesSidebar extends Component {
       //make sure you take care of "this" since its in a function
     }
 
-    let allFolders = this.props.state.folders;
+    let allFolders = context.state.folders;
 
     let fullURL = history.location.pathname;
     let urlID = fullURL.slice(6, 42);
-    const notesArray = this.props.state.notes;
+    const notesArray = context.state.notes;
 
     let noteIdResult;
     notesArray.filter(function (note) {
@@ -36,13 +40,16 @@ export default class NotesSidebar extends Component {
 
     return (
       <>
-        <button onClick={handleBackClick}>Go Back</button>
-
-        <h2>Side Bar</h2>
+        <h2>Folder</h2>
 
         <div className="Folder-Divs">
           <h3>{folderNameResults}</h3>
         </div>
+        <div className="Folder-Divs">
+          <AddFolder />
+        </div>
+
+        <button onClick={handleBackClick}>Go Back</button>
       </>
     );
   }

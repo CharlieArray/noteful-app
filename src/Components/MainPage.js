@@ -5,30 +5,29 @@ import MainSidebar from "./MainSidebar";
 import "./Noteful.css";
 
 export default class MainPage extends React.Component {
-  render() {
+  render(){
+
     return (
       <div>
         <header className="App-header">
-          <Link to="/">
+          {/* <Link to="/"> */}
             <h1>Noteful</h1>
-          </Link>
+          {/* </Link> */}
         </header>
 
         <div className="Group">
+          
           <Route
             exact
             path="/"
-            render={(props) => (
-              <MainSidebar {...props} state={this.props.state} />
-            )}
+            component= {MainSidebar} 
           />
 
           <Route
             exact
             path="/"
-            render={(props) => <MainMain {...props} state={this.props.state} />}
+            component= {MainMain}
           />
-
 
         </div>
       </div>

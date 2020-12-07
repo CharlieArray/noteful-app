@@ -1,30 +1,44 @@
 import React, { Component } from "react";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 import "./Noteful.css";
-
+import StateContext from "../StateContext";
+import AddFolder from "./AddFolder";
+import AddNote from "./AddNote";
 
 export default class MainSidebar extends Component {
   render() {
-    let allFolders = this.props.state.folders;
-
     return (
-      <div className="Sidebar">
-        <h2>Side Bar</h2>
+      <StateContext.Consumer>
+        {(data) => {
+          return (
+            <div className="Sidebar">
+              <h2>
+                Folder
+                <br />
+                Navigation
+              </h2>
 
-        {allFolders.map((folder) => (
-          <li key={folder.id}>
-            <Link to={`/folder/`}>
+              {data.state.folders.map((folder) => (
+                <li key={folder.id}>
+                  <Link to={`/folder/` + folder.id}>
+                    <div className="Folder-Divs">
+                      <h3>{folder.name}</h3>
+                    </div>
+                  </Link>
+                </li>
+              ))}
+
               <div className="Folder-Divs">
-                <h3>{folder.name}</h3>
+                <AddFolder />
               </div>
-            </Link>
-          </li>
-        ))}
 
-        <div className="Folder-Divs">
-          <h3>Add Folder</h3>
-        </div>
-      </div>
+              <div className="Folder-Divs">
+                <AddNote />
+              </div>
+            </div>
+          );
+        }}
+      </StateContext.Consumer>
     );
   }
 }

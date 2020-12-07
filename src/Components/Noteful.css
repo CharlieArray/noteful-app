@@ -1,47 +1,99 @@
 /* CSS for Noteful Components*/
 
-.Main{
-    flex-grow: 2;
-    /* align-content: right; */
-    margin: 30px;
-    max-width: 500px;
+.Main {
+  flex-grow: 2;
+  /* align-content: right; */
+  margin: 20px;
+  max-width: 500px;
+  min-width: 250px;
+
 }
 
-.Sidebar{
-    text-align: center;
-    align-items: flex-start;
-    justify-content: flex-start;
-    margin: 5%;
-    padding-left: 5%;
-    padding-right: 5%;
+.Sidebar {
+  text-align: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 4%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
-.Group{
-    display:flex ;
-    align-items: flex-start;
+.Group {
+  display: flex;
+  align-items: flex-start;
 }
 
-.Note-Divs{
-    padding: 10px;
-    text-align: left;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #000000;
+.Note-Divs {
+  padding: 10px;
+  text-align: left;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #000000;
 }
 
-.Folder-Divs{
-    padding: 5px;
-    text-align: center;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #000000;
+.Folder-Divs {
+  margin-bottom: 5%;
+  padding: 5px;
+  text-align: center;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #000000;
 }
 
-
-h1{
-    text-align: center;
+.Form-AddFolder {
+  display: flex;
+  flex-direction: column;
+  margin: 3px;
 }
 
-li{
-    list-style: none;
+.Form-AddNote {
+  display: flex;
+  flex-direction: column;
+  margin: 3px;
+}
+
+.Group-AddNote {
+  display: flex;
+  padding: 5px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: flex-start;
+}
+
+input,
+::-webkit-input-placeholder,
+:-moz-placeholder {
+  margin-bottom: 3px;
+  margin-left: 3px;
+  margin-right: 3px;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 14px;
+  text-align: center;
+  max-width: 100px;
+}
+
+Button {
+  font-family: "Nunito Sans", sans-serif;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  max-width: 110px;
+  font-size: 14px;
+}
+
+a:link {
+  color: currentColor;
+}
+a:visited {
+  color: currentColor;
+}
+a:hover {
+  color: lightsalmon;
+}
+a:active {
+  color: currentColor;
+}
+
+li {
+  list-style: none;
 }

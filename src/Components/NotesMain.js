@@ -1,24 +1,70 @@
 import React, { Component } from "react";
+import StateContext from "../StateContext";
 import "./Noteful.css";
+import config from "../config";
 
 export default class NotesMain extends Component {
-  render() {
-    const noteId = this.props.noteId;
-    const note = this.props.notes;
-    let noteNameString;
+  static defaultProps = {
+    onDeleteNote: () => {},
+    match: {
+      params: {},
+    },
+  };
 
-    note.filter(function (note) {
+  static contextType = StateContext;
+
+  handleClickDelete = (e) => {
+    e.preventDefault();
+    const noteId = this.props.match.params.noteId;
+    console.log(noteId);
+
+    fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      // .then((res) => {
+      //   if (!res.ok) return res.json().then((e) => Promise.reject(e));
+      //   return res.json();
+      // })
+      .then(() => {
+        this.context.deleteNote(noteId);
+        this.props.history.push(`/`);
+        // allow parent to perform extra behaviour
+        this.props.onDeleteNote(noteId);
+      })
+      .catch((error) => {
+        console.error({ error });
+      });
+  };
+
+  // handleDeleteNote = noteId => {
+  //   this.props.history.push(`/`)
+  // }
+
+  render() {
+    const context = this.context;
+
+    const noteId = this.props.match.params.noteId;
+    let noteResultName;
+    let noteResultDate;
+
+    context.state.notes.filter(function (note) {
       if (note.id === noteId) {
-        noteNameString = note.name;
+        noteResultName = note.name;
+        noteResultDate = note.modified;
       }
     });
 
     return (
       <div className="Main">
         <div className="Note-Divs">
-          <h2>{noteNameString}</h2>
-          <h3>Date Modified: {note.modified}</h3>
-          <button className="Button">Delete Button</button>
+          <h2>{noteResultName}</h2>
+          <h3>Date Modified: {noteResultDate}</h3>
+          <button onClick={this.handleClickDelete} className="Button">
+            Delete Note
+          </button>
         </div>
       </div>
     );

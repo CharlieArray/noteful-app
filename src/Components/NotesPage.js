@@ -4,12 +4,8 @@ import "./Noteful.css";
 import NotesMain from "./NotesMain";
 import NotesSidebar from "./NotesSidebar";
 
-//sidebar show what folder current note is in
-//add a back button
-
 export default class NotesPage extends React.Component {
   render() {
-
     return (
       <div>
         <header className="App-header">
@@ -19,33 +15,13 @@ export default class NotesPage extends React.Component {
         </header>
 
         <div className="Group">
-
           <div className="Sidebar">
-            <Route
-              path="/note/:noteId"
-              render={(props) => (
-                <NotesSidebar 
-                {...props} 
-                match = {this.props.match}
-                history={this.props.history}
-                state={this.props.state}
-                 />
-              )}
-            />
+            <Route path="/note/:noteId" component={NotesSidebar} />
           </div>
 
           <div className="Main">
             <h2>Notes Page</h2>
-            <Route
-              path="/note/:noteId"
-              render={(props) => (
-                <NotesMain
-                  {...props}
-                  noteId={props.match.params.noteId}
-                  notes={this.props.notes}
-                />
-              )}
-            />
+            <Route path="/note/:noteId" component={NotesMain} />
           </div>
         </div>
       </div>

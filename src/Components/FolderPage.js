@@ -1,42 +1,26 @@
 import React from "react";
-import {Route, Link} from 'react-router-dom'
-import FolderMain from './FolderMain'
+import { Route, Link } from "react-router-dom";
+import FolderMain from "./FolderMain";
 import FolderSidebar from "./FolderSidebar";
 import "./Noteful.css";
 
 //should render specific notes if store.notes.id === store.folders.id
-  //tasks: is state passed/props passed down? yes yes
+//tasks: is state passed/props passed down? yes yes
 
 export default class FolderPage extends React.Component {
-
   render() {
-
     return (
       <div>
-         <header className="App-header">
-          <Link to ='/'>
+        <header className="App-header">
+          <Link to="/">
             <h1>Noteful</h1>
           </Link>
         </header>
 
         <div className="Group">
+          <Route path="/folder/:folderId" component={FolderSidebar} />
 
-            <Route 
-            path="/folder"
-            render={(props)=>
-              <FolderSidebar {...props} state={this.props.state} />
-             }
-            />
-
-            <Route
-            path="/folder"
-            render={(props) => <FolderMain {...props} state={this.props.state} />}
-          />
-
-
-            <div className="Main">
-            <h2>Folder Page</h2>
-            </div>
+          <Route path="/folder/:folderId" component={FolderMain} />
         </div>
       </div>
     );
