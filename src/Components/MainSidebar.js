@@ -18,7 +18,7 @@ export default class MainSidebar extends Component {
                 Navigation
               </h2>
 
-              {data.state.folders.map((folder) => (
+              {data.folders.map((folder) => (
                 <li key={folder.id}>
                   <Link to={`/folder/` + folder.id}>
                     <div className="Folder-Divs">

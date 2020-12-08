@@ -50,7 +50,7 @@ export default class NotesMain extends Component {
     let noteResultName;
     let noteResultDate;
 
-    context.state.notes.filter(function (note) {
+    context.notes.filter(function (note) {
       if (note.id === noteId) {
         noteResultName = note.name;
         noteResultDate = note.modified;
@@ -62,7 +62,10 @@ export default class NotesMain extends Component {
         <div className="Note-Divs">
           <h2>{noteResultName}</h2>
           <h3>Date Modified: {noteResultDate}</h3>
-          <button onClick={this.handleClickDelete} className="Button">
+          <button onClick={event => {
+            context.deleteNote(noteId)
+            this.props.history.push(`/`)
+          }} className="Button">
             Delete Note
           </button>
         </div>

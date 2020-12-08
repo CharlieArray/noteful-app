@@ -5,15 +5,27 @@ import FolderPage from "./Components/FolderPage";
 import MainPage from "./Components/MainPage";
 import NotesPage from "./Components/NotesPage";
 import StateContext from "./StateContext";
+import AddNote from './Components/AddNote'
 import config from './config';
 
 class App extends React.Component {
-  state = {
-    notes: [],
-    folders: [],
-  };
+  constructor(props){
+    super(props);
+    this.state = {
+      notes: [],
+      folders: [],
+    };
+  
+  this.updateNoteName = this.updateNoteName.bind(this);
+  this.updateNoteContent = this.updateNoteContent.bind(this);
+  this.updateFolderLocation = this.updateFolderLocation.bind(this);
+}
 
-  componentDidMount() {
+  componentDidMount(){
+    this.getData();
+  }
+
+  getData = () => {
     Promise.all([
         fetch(`${config.API_ENDPOINT}/notes`),
         fetch(`${config.API_ENDPOINT}/folders`)
@@ -34,10 +46,14 @@ class App extends React.Component {
         });
 }
 
+
 handleDeleteNote = noteId => {
-    this.setState({
-        notes: this.state.notes.filter(note => note.id !== noteId)
-    });
+      fetch(`${config.API_ENDPOINT}/notes/${noteId}`,{
+        method: "delete"
+      })
+      .then(()=>{
+        this.getData()
+      })
 };
 
 updateNoteName(name) {
@@ -54,13 +70,15 @@ updateFolderLocation(folderId) {
 
   render() {
     const value = 
-    { state : this.state, 
+    { ... this.state, 
      deleteNote : this.handleDeleteNote,
      onNoteNameChange: this.updateNoteName,
      onNoteContentChange: this.updateNoteContent,
      onNoteLocationChange: this.updateFolderLocation,
+     getData: this.getData
     }
-    
+    console.log(value)
+
     return (
       //passed in context must be value = {whatever context}
       <StateContext.Provider value={value}>

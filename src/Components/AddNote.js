@@ -1,31 +1,36 @@
 import React from "react";
 import "./Noteful.css";
 import config from "../config";
+import StateContext from "../StateContext";
+
 
 export default class AddNote extends React.Component {
+  static contextType = StateContext
   constructor(props) {
     super(props);
-    this.handleNoteNameChange = this.handleNoteNameChange.bind(this);
-    this.handleNoteContentChange = this.handleNoteNameChange.bind(this);
-    this.handleNoteLocationChange = this.handleNoteNameChange.bind(this);
+    // this.handleNoteNameChange = this.handleNoteNameChange.bind(this);
+    // this.handleNoteContentChange = this.handleNoteNameChange.bind(this);
+    // this.handleNoteLocationChange = this.handleNoteNameChange.bind(this);
   }
 
-  handleNoteNameChange(event) {
-    this.props.onNoteNameChange(event.target.value)
+  handleNoteNameChange= (event) => {
+    console.log(this.props)
+    this.context.onNoteNameChange(event.target.value)
   }
 
-  handleNoteContentChange(event) {
-    this.props.onNoteContentChange(event.target.value)
+  handleNoteContentChange=(event) => {
+    this.context.onNoteContentChange(event.target.value)
 
   }
-  handleNoteLocationChange(event) {
-    this.props.onNoteLocationChange(event.target.value)
+  //change to select input with options for folders
+  handleNoteLocationChange=(event) => {
+    this.context.onNoteLocationChange(event.target.value)
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    const { name, content, folderId } = this.props.state;
-    const notes = { name, content, folderId };
+    const { name, content, folderId } = this.context;
+    const notes = { name: name.value, content: content.value, folderId: folderId.value };
     const url = `${config.API_ENDPOINT}/notes`;
     const options = {
       method: "POST",
@@ -43,12 +48,8 @@ export default class AddNote extends React.Component {
         return res.json();
       })
       .then((data) => {
-        this.setState({
-          name: "",
-          content: "",
-          folderId: "",
-        });
-        this.addNote(name, content,folderId);
+        event.target.reset()
+        this.context.getData()
       })
       .catch((err) => {
         this.setState({
@@ -61,7 +62,7 @@ export default class AddNote extends React.Component {
     return (
       <>
         <h3>Add New Note</h3>
-        <form className="Form-AddNote">
+        <form onSubmit={(event) => this.handleSubmit(event)} className="Form-AddNote">
           <div className="Group-AddNote">
             <label htmlFor="name">Note Name:</label>
             <input
@@ -83,16 +84,20 @@ export default class AddNote extends React.Component {
 
           <div className="Group-AddNote">
             <label htmlFor="">Note Location:</label>
-            <input
-              type="text"
-              name="folder"
-              id="folder"
-              onChange={event => this.handleNoteLocationChange(event)}
-            ></input>
+            <select
+             name="folder"
+             id="folder"
+             onChange={event => this.handleNoteLocationChange(event)}
+            >
+              {this.context.folders.map(folder => <option 
+              key={folder.id} 
+              value={folder.id}>{folder.name}</option>)}
+            </select>
+           
           </div>
 
           <div className="Group-AddNote">
-            <button onSubmit={(event) => this.handleSubmit(event)}>
+            <button >
               Create Note
             </button>
           </div>

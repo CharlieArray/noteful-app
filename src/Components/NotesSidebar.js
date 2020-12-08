@@ -15,11 +15,11 @@ export default class NotesSidebar extends Component {
       //make sure you take care of "this" since its in a function
     }
 
-    let allFolders = context.state.folders;
+    let allFolders = context.folders;
 
     let fullURL = history.location.pathname;
     let urlID = fullURL.slice(6, 42);
-    const notesArray = context.state.notes;
+    const notesArray = context.notes;
 
     let noteIdResult;
     notesArray.filter(function (note) {

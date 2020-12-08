@@ -9,8 +9,8 @@ export default class FolderMain extends Component {
 
   render() {
     const context = this.context;
-    const folders = context.state.folders;
-    const notes = context.state.notes;
+    const folders = context.folders;
+    const notes = context.notes;
     const folderId = this.props.match.params.folderId;
 
     let noteResultName;

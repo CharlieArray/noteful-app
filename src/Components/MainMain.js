@@ -18,15 +18,16 @@ export default class MainMain extends Component {
               <Route path="/note/:noteId" component={NotesPage} />
 
               {/* This gave me most issues state passed in cannot be in { } for map/filter methods  */}
-              {data.state.notes.map((note) => (
+              {data.notes.map((note) => (
                 <li key={note.id}>
-                  <Link to={`/note/${note.id}`}>
+        
                     <div className="Note-Divs">
+                    <Link to={`/note/${note.id}`}>
                       <h2>{note.name}</h2>
                       <h3>Date Modified: {note.modified}</h3>
-                      <button className="Button">Delete Note</button>
+                        </Link>
+                        <button onClick={event => data.deleteNote(note.id)} className="Button">Delete Note</button>
                     </div>
-                  </Link>
                 </li>
               ))}
             </div>
