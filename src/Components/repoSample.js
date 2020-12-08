@@ -3,7 +3,6 @@ import "./Noteful.css";
 import config from "../config";
 import StateContext from "../StateContext";
 
-
 export default class AddNote extends React.Component {
   static contextType = StateContext
   constructor(props) {
@@ -29,10 +28,7 @@ export default class AddNote extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    let { name, content, folderId } = this.context;
-    const {folders} = this.context;
-    if (folderId == null)
-      {folderId = folders[0].id} 
+    const { name, content, folderId } = this.context;
     const notes = { name: name.value, content: content.value, folderId: folderId.value };
     const url = `${config.API_ENDPOINT}/notes`;
     const options = {

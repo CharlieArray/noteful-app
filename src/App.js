@@ -5,7 +5,6 @@ import FolderPage from "./Components/FolderPage";
 import MainPage from "./Components/MainPage";
 import NotesPage from "./Components/NotesPage";
 import StateContext from "./StateContext";
-import AddNote from './Components/AddNote'
 import config from './config';
 
 class App extends React.Component {
@@ -19,6 +18,7 @@ class App extends React.Component {
   this.updateNoteName = this.updateNoteName.bind(this);
   this.updateNoteContent = this.updateNoteContent.bind(this);
   this.updateFolderLocation = this.updateFolderLocation.bind(this);
+  this.updateFolder = this.updateFolder.bind(this);
 }
 
   componentDidMount(){
@@ -56,17 +56,22 @@ handleDeleteNote = noteId => {
       })
 };
 
-updateNoteName(name) {
+updateNoteName = name => {
   this.setState({ name: { value: name } })
 }
 
-updateNoteContent(content) {
+updateNoteContent = content => {
   this.setState({ content: { value: content } });
 }
 
-updateFolderLocation(folderId) {
+updateFolderLocation = folderId => {
   this.setState({ folderId: { value: folderId } });
 }
+
+updateFolder = name => {
+  this.setState({ name: { value: name } });
+}
+
 
   render() {
     const value = 
@@ -75,6 +80,7 @@ updateFolderLocation(folderId) {
      onNoteNameChange: this.updateNoteName,
      onNoteContentChange: this.updateNoteContent,
      onNoteLocationChange: this.updateFolderLocation,
+     onFolderChange: this.updateFolder,
      getData: this.getData
     }
     console.log(value)

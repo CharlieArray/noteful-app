@@ -3,7 +3,6 @@ import { Link, Route } from "react-router-dom";
 import NotesPage from "./NotesPage";
 import "./Noteful.css";
 import StateContext from "../StateContext";
-import AddNote from "./AddNote";
 
 //might need to refacotr this to have a static contexType since its a class function
 export default class MainMain extends Component {
