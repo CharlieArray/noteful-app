@@ -49,11 +49,13 @@ export default class NotesMain extends Component {
     const noteId = this.props.match.params.noteId;
     let noteResultName;
     let noteResultDate;
+    let noteContents;
 
     context.notes.filter(function (note) {
       if (note.id === noteId) {
         noteResultName = note.name;
         noteResultDate = note.modified;
+        noteContents = note.content;
       }
     });
 
@@ -62,6 +64,7 @@ export default class NotesMain extends Component {
         <div className="Note-Divs">
           <h2>{noteResultName}</h2>
           <h3>Date Modified: {noteResultDate}</h3>
+          <h4>{noteContents}</h4>
           <button onClick={event => {
             context.deleteNote(noteId)
             this.props.history.push(`/`)
