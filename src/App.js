@@ -13,6 +13,7 @@ class App extends React.Component {
     this.state = {
       notes: [],
       folders: [],
+      touched: false
     };
   
   this.updateNoteName = this.updateNoteName.bind(this);
@@ -57,19 +58,19 @@ handleDeleteNote = noteId => {
 };
 
 updateNoteName = name => {
-  this.setState({ name: { value: name } })
+  this.setState({ name: { value: name, touched: true } })
 }
 
 updateNoteContent = content => {
-  this.setState({ content: { value: content } });
+  this.setState({ content: { value: content, touched: true } });
 }
 
 updateFolderLocation = folderId => {
-  this.setState({ folderId: { value: folderId } });
+  this.setState({ folderId: { value: folderId, touched: true } });
 }
 
 updateFolder = name => {
-  this.setState({ name: { value: name } });
+  this.setState({ name: { value: name, touched: true } });
 }
 
 
@@ -83,7 +84,6 @@ updateFolder = name => {
      onFolderChange: this.updateFolder,
      getData: this.getData
     }
-    console.log(value)
 
     return (
       //passed in context must be value = {whatever context}
