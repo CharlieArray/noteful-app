@@ -4,8 +4,6 @@ import FolderMain from "./FolderMain";
 import FolderSidebar from "./FolderSidebar";
 import "./Noteful.css";
 
-//should render specific notes if store.notes.id === store.folders.id
-//tasks: is state passed/props passed down? yes yes
 
 export default class FolderPage extends React.Component {
   render() {

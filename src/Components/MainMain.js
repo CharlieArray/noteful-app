@@ -3,6 +3,8 @@ import { Link, Route } from "react-router-dom";
 import NotesPage from "./NotesPage";
 import "./Noteful.css";
 import StateContext from "../StateContext";
+import PropTypes from 'prop-types'
+
 
 //might need to refacotr this to have a static contexType since its a class function
 export default class MainMain extends Component {
@@ -36,3 +38,8 @@ export default class MainMain extends Component {
     );
   }
 }
+
+MainMain.propTypes = {
+  key: PropTypes.string
+};
+

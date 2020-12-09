@@ -3,6 +3,8 @@ import "./Noteful.css";
 import config from "../config";
 import StateContext from "../StateContext";
 import getCurrentDate from "../Components/getCurrentDate";
+import PropTypes from 'prop-types'
+import FormError from "./FormError";
 
 export default class AddNote extends React.Component {
   static contextType = StateContext;
@@ -28,6 +30,7 @@ export default class AddNote extends React.Component {
     if (folderId == null) {
       folderId = folders[0].id;
     }
+    
     const notes = {
       name: name.value,
       content: content.value,
@@ -65,23 +68,24 @@ export default class AddNote extends React.Component {
     return (
       <div className="Note-Divs">
         <h3>Add New Note</h3>
+        <FormError>
         <form
           onSubmit={(event) => this.handleSubmit(event)}
           className="Form-AddNote"
         >
           <div className="Group-AddNote">
             <label htmlFor="name">Note Name:</label>
-            <input
+            <input required
               type="text"
               name="name"
               id="name"
-              minLength="2"
+              minLength="3"
               onChange={(event) => this.handleNoteNameChange(event)}
             ></input>
           </div>
           <div className="Group-AddNote">
             <label htmlFor="content">Note Content:</label>
-            <input
+            <input required
               type="text"
               name="content"
               id="content"
@@ -92,10 +96,10 @@ export default class AddNote extends React.Component {
 
           <div className="Group-AddNote">
             <label htmlFor="">Note Location:</label>
-            <select
+            <select required
               name="folder"
               id="folder"
-              minLength="3"
+              defaultValue="Important"
               onChange={(event) => this.handleNoteLocationChange(event)}
             >
               <option>Choose Folder:</option>
@@ -113,7 +117,13 @@ export default class AddNote extends React.Component {
             <button>Create Note</button>
           </div>
         </form>
+        </FormError>
       </div>
     );
   }
 }
+
+AddNote.propTypes = {
+  event: PropTypes.string
+};
+

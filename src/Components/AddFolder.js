@@ -2,23 +2,13 @@ import React, { Component } from "react";
 import "./Noteful.css";
 import config from "../config";
 import StateContext from "../StateContext";
-// import DisplayValidationError from "./DisplayValidationError";
+import FormError from "./FormError";
 
 export default class AddFolder extends Component {
   static contextType = StateContext;
   constructor(props) {
     super(props);
   }
-
-  // validateName = (event) => {
-  //   const name = event.target.value
-  //   console.log(name)
-  //   if (name.length === 0) {
-  //     return "Name is required";
-  //   } else if (name.length < 3) {
-  //     return "Name must be at least 3 characters long";
-  //   }
-  // };
 
   handleAddFolder = (event) => {
     this.context.onFolderChange(event.target.value);
@@ -61,22 +51,23 @@ export default class AddFolder extends Component {
     return (
       <div>
         <h3>Add New Folder</h3>
-        <form onSubmit={(event) => this.handleSubmit(event)}>
-          <label className="Form-AddFolder" htmlFor="folder"></label>
-          <input
-            onChange={(event) => this.handleAddFolder(event)}
-            // ref= {this.folderInput}
-            type="text"
-            id="folder"
-            name="folder"
-            minLength="3"
-          />
-          {/* {this.context.touched && (
-            <DisplayValidationError message={this.validateName()} />
-          )} */}
-          <br />
-          <button> Create Folder</button>
-        </form>
+        <FormError>
+          <form onSubmit={(event) => this.handleSubmit(event)}>
+            <label className="Form-AddFolder" htmlFor="folder"></label>
+            <input
+              required
+              onChange={(event) => this.handleAddFolder(event)}
+              // ref= {this.folderInput}
+              type="text"
+              id="folder"
+              name="folder"
+              minLength="3"
+            />
+            <br />
+
+            <button> Create Folder</button>
+          </form>
+        </FormError>
       </div>
     );
   }

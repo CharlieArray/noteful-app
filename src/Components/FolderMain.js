@@ -16,9 +16,6 @@ export default class FolderMain extends Component {
     let noteResultName;
     let noteResultDate;
 
-    // console.log(notes); //good
-    // console.log(folders); //good
-
     const filterNotes = notes.filter(function (note) {
       if (note.folderId === folderId) {
         return true;

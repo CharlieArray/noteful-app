@@ -4,6 +4,8 @@ import "./Noteful.css";
 import StateContext from "../StateContext";
 import AddFolder from "./AddFolder";
 import AddNote from "./AddNote";
+import PropTypes from 'prop-types'
+
 
 export default class MainSidebar extends Component {
   render() {
@@ -46,3 +48,8 @@ export default class MainSidebar extends Component {
     );
   }
 }
+
+MainSidebar.propTypes = {
+  key: PropTypes.string
+};
+

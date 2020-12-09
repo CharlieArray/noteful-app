@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import StateContext from "../StateContext";
 import "./Noteful.css";
 import config from "../config";
-import AddNote from "./AddNote";
+import PropTypes from 'prop-types'
 
 export default class NotesMain extends Component {
   static defaultProps = {
@@ -40,9 +40,6 @@ export default class NotesMain extends Component {
       });
   };
 
-  // handleDeleteNote = noteId => {
-  //   this.props.history.push(`/`)
-  // }
 
   render() {
     const context = this.context;
@@ -79,3 +76,10 @@ export default class NotesMain extends Component {
     );
   }
 }
+
+NotesMain.propTypes = {
+  noteId: PropTypes.string,
+  noteResultDate: PropTypes.string,
+  noteContents: PropTypes.string,
+};
+
