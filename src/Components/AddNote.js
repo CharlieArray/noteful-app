@@ -6,15 +6,9 @@ import getCurrentDate from "../Components/getCurrentDate";
 
 export default class AddNote extends React.Component {
   static contextType = StateContext;
-  constructor(props) {
-    super(props);
-    // this.handleNoteNameChange = this.handleNoteNameChange.bind(this);
-    // this.handleNoteContentChange = this.handleNoteNameChange.bind(this);
-    // this.handleNoteLocationChange = this.handleNoteNameChange.bind(this);
-  }
+  
 
   handleNoteNameChange = (event) => {
-    console.log(this.props);
     this.context.onNoteNameChange(event.target.value);
   };
 
@@ -69,7 +63,7 @@ export default class AddNote extends React.Component {
 
   render() {
     return (
-      <>
+      <div className="Note-Divs">
         <h3>Add New Note</h3>
         <form
           onSubmit={(event) => this.handleSubmit(event)}
@@ -81,6 +75,7 @@ export default class AddNote extends React.Component {
               type="text"
               name="name"
               id="name"
+              minLength="2"
               onChange={(event) => this.handleNoteNameChange(event)}
             ></input>
           </div>
@@ -90,6 +85,7 @@ export default class AddNote extends React.Component {
               type="text"
               name="content"
               id="content"
+              minLength="3"
               onChange={(event) => this.handleNoteContentChange(event)}
             ></input>
           </div>
@@ -99,6 +95,7 @@ export default class AddNote extends React.Component {
             <select
               name="folder"
               id="folder"
+              minLength="3"
               onChange={(event) => this.handleNoteLocationChange(event)}
             >
               <option>Choose Folder:</option>
@@ -116,7 +113,7 @@ export default class AddNote extends React.Component {
             <button>Create Note</button>
           </div>
         </form>
-      </>
+      </div>
     );
   }
 }

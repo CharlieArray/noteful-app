@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import StateContext from "../StateContext";
 import "./Noteful.css";
 import config from "../config";
+import AddNote from "./AddNote";
 
 export default class NotesMain extends Component {
   static defaultProps = {
@@ -60,6 +61,7 @@ export default class NotesMain extends Component {
     });
 
     return (
+      <>
       <div className="Main">
         <div className="Note-Divs">
           <h2>{noteResultName}</h2>
@@ -73,6 +75,7 @@ export default class NotesMain extends Component {
           </button>
         </div>
       </div>
+      </>
     );
   }
 }

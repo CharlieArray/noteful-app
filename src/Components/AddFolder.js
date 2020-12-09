@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Noteful.css";
 import config from "../config";
 import StateContext from "../StateContext";
-import DisplayValidationError from "./DisplayValidationError";
+// import DisplayValidationError from "./DisplayValidationError";
 
 export default class AddFolder extends Component {
   static contextType = StateContext;
@@ -10,18 +10,17 @@ export default class AddFolder extends Component {
     super(props);
   }
 
-  validateName = (event) => {
-    const name = event.target.value.trim()
-    console.log(name)
-    if (name.length === 0) {
-      return "Name is required";
-    } else if (name.length < 3) {
-      return "Name must be at least 3 characters long";
-    }
-  };
+  // validateName = (event) => {
+  //   const name = event.target.value
+  //   console.log(name)
+  //   if (name.length === 0) {
+  //     return "Name is required";
+  //   } else if (name.length < 3) {
+  //     return "Name must be at least 3 characters long";
+  //   }
+  // };
 
   handleAddFolder = (event) => {
-    this.validateName(event)
     this.context.onFolderChange(event.target.value);
   };
 
@@ -70,13 +69,13 @@ export default class AddFolder extends Component {
             type="text"
             id="folder"
             name="folder"
+            minLength="3"
           />
-          {this.context.touched && (
+          {/* {this.context.touched && (
             <DisplayValidationError message={this.validateName()} />
-          )}
+          )} */}
           <br />
           <button> Create Folder</button>
-          {/* create event trigger*/}
         </form>
       </div>
     );

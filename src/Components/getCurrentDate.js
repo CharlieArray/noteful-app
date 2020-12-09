@@ -11,5 +11,5 @@ export default function getCurrentDate(space=' '){
         }
         else timeAMorPM = "PM";
     
-    return `${month<10?`0${month}`:`${month}`} / ${date} / ${year} - ${hours} ${timeAMorPM}`
+    return `${month<10?`0${month}`:`${month}`} / ${date} / ${year} - ${hours}:00 ${timeAMorPM}`
     }

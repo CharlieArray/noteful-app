@@ -33,7 +33,11 @@ export default class MainSidebar extends Component {
               </div>
 
               <div className="Folder-Divs">
-                <AddNote />
+
+                <button 
+                onClick={event => this.props.history.push(`/note`)}>
+                  Create New Note
+                  </button>
               </div>
             </div>
           );
