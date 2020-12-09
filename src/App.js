@@ -13,7 +13,6 @@ class App extends React.Component {
     this.state = {
       notes: [],
       folders: [],
-      touched: false
     };
   
   this.updateNoteName = this.updateNoteName.bind(this);
@@ -58,19 +57,19 @@ handleDeleteNote = noteId => {
 };
 
 updateNoteName = name => {
-  this.setState({ name: { value: name, touched: true } })
+  this.setState({ name: { value: name } })
 }
 
 updateNoteContent = content => {
-  this.setState({ content: { value: content, touched: true } });
+  this.setState({ content: { value: content } });
 }
 
 updateFolderLocation = folderId => {
-  this.setState({ folderId: { value: folderId, touched: true } });
+  this.setState({ folderId: { value: folderId} });
 }
 
 updateFolder = name => {
-  this.setState({ name: { value: name, touched: true } });
+  this.setState({ name: { value: name,} });
 }
 
 
