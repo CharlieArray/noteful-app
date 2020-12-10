@@ -50,10 +50,9 @@ export default class AddFolder extends Component {
   render() {
     return (
       <div>
-        <h3>Add New Folder</h3>
         <FormError>
           <form onSubmit={(event) => this.handleSubmit(event)}>
-            <label className="Form-AddFolder" htmlFor="folder"></label>
+            <label className="Form-AddFolder" htmlFor="folder">Add Folder</label>
             <input
               required
               onChange={(event) => this.handleAddFolder(event)}

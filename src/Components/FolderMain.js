@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import StateContext from "../StateContext";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 import "./Noteful.css";
 
 //only return notes from highlighted folder
@@ -25,18 +25,19 @@ export default class FolderMain extends Component {
     return (
       <div className="Main">
         <h2>Folder Page</h2>
-
-        {filterNotes.map((note) => (
-          <li key={note.id}>
-            <Link to={`/note/${note.id}`}>
-              <div className="Note-Divs">
-                <h2>{note.name}</h2>
-                <h3>Date Modified: {note.modified}</h3>
-                <button className="Button">Delete Button</button>
-              </div>
-            </Link>
-          </li>
-        ))}
+        <ul>
+          {filterNotes.map((note) => (
+            <li key={note.id}>
+              <Link to={`/note/${note.id}`}>
+                <div className="Note-Divs">
+                  <h2>{note.name}</h2>
+                  <h3>Date Modified: {note.modified}</h3>
+                  <button className="Button">Delete Button</button>
+                </div>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }

@@ -12,17 +12,17 @@ export default class FolderSidebar extends Component {
           return (
             <div className="Sidebar">
               <h2>Folder Name</h2>
-
-              {data.folders.map((folder) => (
-                <li key={folder.id}>
-                  <Link to={`/folder/` + folder.id}>
-                    <div className="Folder-Divs">
-                      <h3>{folder.name}</h3>
-                    </div>
-                  </Link>
-                </li>
-              ))}
-
+              <ul>
+                {data.folders.map((folder) => (
+                  <li key={folder.id}>
+                    <Link to={`/folder/` + folder.id}>
+                      <div className="Folder-Divs">
+                        <h3>{folder.name}</h3>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
               <div className="Folder-Divs">
                 <AddFolder />
               </div>

@@ -2,8 +2,8 @@
 
 .Main {
   flex-grow: 2;
-  /* align-content: right; */
   margin: 20px;
+  margin-left: 100px;
   max-width: 500px;
   min-width: 250px;
 
@@ -92,6 +92,10 @@ a:hover {
 }
 a:active {
   color: currentColor;
+}
+
+ul{
+  padding: 0px;
 }
 
 li {

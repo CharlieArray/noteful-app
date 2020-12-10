@@ -19,27 +19,27 @@ export default class MainSidebar extends Component {
                 <br />
                 Navigation
               </h2>
-
-              {data.folders.map((folder) => (
-                <li key={folder.id}>
-                  <Link to={`/folder/` + folder.id}>
-                    <div className="Folder-Divs">
-                      <h3>{folder.name}</h3>
-                    </div>
-                  </Link>
-                </li>
-              ))}
-
+              <ul>
+                {data.folders.map((folder) => (
+                  <li key={folder.id}>
+                    <Link to={`/folder/` + folder.id}>
+                      <div className="Folder-Divs">
+                        <h3>{folder.name}</h3>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
               <div className="Folder-Divs">
                 <AddFolder />
               </div>
 
               <div className="Folder-Divs">
-
-                <button 
-                onClick={event => this.props.history.push(`/note`)}>
-                  Create New Note
-                  </button>
+                <label htmlFor="addNoteButton">Add Note</label>
+                <br/>
+                <button name="addNoteButton" id="addNoteButton" onClick={(event) => this.props.history.push(`/note`)}>
+                  Create Note
+                </button>
               </div>
             </div>
           );

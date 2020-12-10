@@ -98,7 +98,7 @@ export default class AddNote extends React.Component {
             </div>
 
             <div className="Group-AddNote">
-              <label htmlFor="">Note Location:</label>
+              <label htmlFor="folder">Note Location:</label>
               <select
                 required
                 name="folder"
