@@ -22,8 +22,8 @@ export default class MainMain extends Component {
                   <li key={note.id}>
                     <div className="Note-Divs">
                       <Link to={`/note/${note.id}`}>
-                        <h2>{note.name}</h2>
-                        <h3>Date Modified: {note.modified}</h3>
+                        <h2>{note.note_name}</h2>
+                        <h3>Date Modified: {note.note_modified}</h3>
                       </Link>
                       <button
                         onClick={(event) => data.deleteNote(note.id)}

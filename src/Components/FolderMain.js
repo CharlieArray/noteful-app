@@ -9,17 +9,19 @@ export default class FolderMain extends Component {
 
   render() {
     const context = this.context;
-    const folders = context.folders;
     const notes = context.notes;
+    
     const folderId = this.props.match.params.folderId;
 
-    let noteResultName;
-    let noteResultDate;
+    console.log('this is folderID:'+ folderId)
+
 
     const filterNotes = notes.filter(function (note) {
-      if (note.folderId === folderId) {
+      console.log("this is note folder:"+ note.reference_folder_id)
+      if (note.reference_folder_id == folderId) {
         return true;
       }
+
     });
 
     return (

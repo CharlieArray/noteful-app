@@ -21,10 +21,10 @@ export default class MainSidebar extends Component {
               </h2>
               <ul>
                 {data.folders.map((folder) => (
-                  <li key={folder.id}>
-                    <Link to={`/folder/` + folder.id}>
+                  <li key={folder.folder_id}>
+                    <Link to={`/folder/` + folder.folder_id}>
                       <div className="Folder-Divs">
-                        <h3>{folder.name}</h3>
+                        <h3>{folder.folder_name}</h3>
                       </div>
                     </Link>
                   </li>
