@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "./Noteful.css";
 import StateContext from "../StateContext";
 import AddFolder from "./AddFolder";
-import AddNote from "./AddNote";
 import PropTypes from 'prop-types'
 
 

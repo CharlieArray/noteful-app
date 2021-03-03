@@ -55,6 +55,7 @@ export default class NotesMain extends Component {
         noteResultDate = note.modified;
         noteContents = note.content;
       }
+      return note
     });
 
     return (

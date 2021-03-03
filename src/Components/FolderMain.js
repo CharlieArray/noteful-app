@@ -3,7 +3,8 @@ import StateContext from "../StateContext";
 import { Link } from "react-router-dom";
 import "./Noteful.css";
 
-//only return notes from highlighted folder
+
+  //only return notes from highlighted folder
 export default class FolderMain extends Component {
   static contextType = StateContext;
 
@@ -18,10 +19,10 @@ export default class FolderMain extends Component {
 
     const filterNotes = notes.filter(function (note) {
       console.log("this is note folder:"+ note.reference_folder_id)
-      if (note.reference_folder_id == folderId) {
+      if (note.folder_id === folderId) {
         return true;
       }
-
+      return note
     });
 
     return (
@@ -32,8 +33,8 @@ export default class FolderMain extends Component {
             <li key={note.id}>
               <Link to={`/note/${note.id}`}>
                 <div className="Note-Divs">
-                  <h2>{note.name}</h2>
-                  <h3>Date Modified: {note.modified}</h3>
+                  <h2>{note.note_name}</h2>
+                  <h3>Date Modified: {note.note_modified}</h3>
                   <button className="Button">Delete Button</button>
                 </div>
               </Link>

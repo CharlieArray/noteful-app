@@ -25,7 +25,9 @@ export default class NotesSidebar extends Component {
     notesArray.filter(function (note) {
       if (note.id === urlID) {
         noteIdResult = note.folderId;
+        return note
       }
+      return note
     });
 
     let folderNameResults;
@@ -33,6 +35,7 @@ export default class NotesSidebar extends Component {
       if (noteIdResult === folder.id) {
         folderNameResults = folder.name;
       }
+      return folder
     });
 
     //known is notes.id   => match notes.id to store  =>

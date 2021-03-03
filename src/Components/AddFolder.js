@@ -6,9 +6,6 @@ import FormError from "./FormError";
 
 export default class AddFolder extends Component {
   static contextType = StateContext;
-  constructor(props) {
-    super(props);
-  }
 
   handleAddFolder = (event) => {
     this.context.onFolderChange(event.target.value);
@@ -18,7 +15,7 @@ export default class AddFolder extends Component {
     event.preventDefault();
     const { name } = this.context;
     const folders = {
-      name: name.value,
+      folder_name: name.value,
     };
     const url = `${config.API_ENDPOINT}/folders`;
     const options = {

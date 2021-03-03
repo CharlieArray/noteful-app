@@ -75,7 +75,7 @@ updateFolder = name => {
 
   render() {
     const value = 
-    { ... this.state, 
+    { ...this.state, 
      deleteNote : this.handleDeleteNote,
      onNoteNameChange: this.updateNoteName,
      onNoteContentChange: this.updateNoteContent,

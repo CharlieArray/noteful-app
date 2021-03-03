@@ -33,10 +33,10 @@ export default class AddNote extends React.Component {
     }
 
     const notes = {
-      name: name.value,
+      note_name: name.value,
       content: content.value,
-      folderId: folderId.value,
-      modified: modified,
+      folder_id: folderId.value,
+      note_modified: modified,
     };
     const url = `${config.API_ENDPOINT}/notes`;
     const options = {
@@ -108,7 +108,7 @@ export default class AddNote extends React.Component {
                 <option value=""></option>
                 {this.context.folders.map((folder) => (
                   <option key={folder.id} value={folder.id}>
-                    {folder.name}
+                    {folder.folder_name}
                   </option>
                 ))}
               </select>

@@ -1,3 +1,5 @@
-export default {
-    API_ENDPOINT: 'http://localhost:8000'
+const config = {
+    API_ENDPOINT: 'https://noteful-api-server.herokuapp.com'
   }
+
+  export default config
